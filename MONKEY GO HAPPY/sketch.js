@@ -18,6 +18,7 @@ function setup() {
   player=createSprite(300,250,10,10);
   player.addAnimation("running Monkey",playerA);
     player.scale=0.2
+  bananaGroup=new Group()
 } 
   
 function draw() {
@@ -26,14 +27,20 @@ function draw() {
   drawSprites();
   fill ("white")
   text(mouseX+","+mouseY,mouseX,mouseY);
+  if (bananaGroup.isTouching (player)){
+    bananaGroup.destroyEach()
+  }
   
-}
+  
+  
 
+  }
 function spawnBanana(){
- banana=createSprite(300,-5,20,20);
+  banana=createSprite(300,-5,20,20);
   banana.velocityY=+4
   banana.addAnimation ("banana",food);
   banana.scale=0.05
+  bananaGroup.add(banana)
 
 }
 
